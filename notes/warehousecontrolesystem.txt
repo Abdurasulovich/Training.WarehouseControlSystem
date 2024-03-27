@@ -1,0 +1,57 @@
+1. Register pruduct
+	* Product id
+	* Product name
+	* Product quantity
+	* Product IN date
+	* Product OUT date
+	* Price of kg(a day)
+	* Product place number/id
+	* Description
+2. Users
+	* Id
+	* First name
+	* Last name
+	* username (must add check button)
+	* Phone number
+	* Email
+	* Password
+	* Confirm password
+
+3. Customer
+	* Id
+	* First name
+	* Last name
+	* Phone number
+	* Second phone number
+	* Generate Id(for checking, if customer come to take away product)
+	* Note
+
+
+
+
+
+
+
+
+
+
+4. Customer records
+	* Customer generated id
+
+Main page
+	* Categories
+		~ User Profile
+		~ Register product
+		~ Customers
+		~ Products
+		~ Billing
+	* Serching
+		~ By user generated id
+		~ By product name/id
+		~ export Exel
+User profile
+Products base
+Billing
+	* Product id/Customer id(which given by us)
+
+		
