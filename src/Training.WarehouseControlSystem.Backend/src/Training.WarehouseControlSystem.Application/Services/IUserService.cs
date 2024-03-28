@@ -5,7 +5,7 @@ namespace Training.WarehouseControlSystem.Application.Services;
 
 public interface IUserService
 {
-    IQueryable<User> Get(Expression<Func<User, bool>>? predicate = default, bool asNoTracking = false);
+    IQueryable<User?> Get(Expression<Func<User, bool>>? predicate = default, bool asNoTracking = false);
 
     ValueTask<User?> GetByIdAsync(Guid userId, bool asNoTracking = false, CancellationToken cancellationToken = default);
 
@@ -15,5 +15,5 @@ public interface IUserService
 
     ValueTask<User> UpdateAsync(User user, bool saveChanges = true, CancellationToken cancellationToken = default);
 
-    ValueTask<User?> DeleteByIdAsync(Guid user, bool saveChanges = true, CancellationToken cancellationToken = default);
+    ValueTask<User?> DeleteByIdAsync(Guid userId, bool saveChanges = true, CancellationToken cancellationToken = default);
 }

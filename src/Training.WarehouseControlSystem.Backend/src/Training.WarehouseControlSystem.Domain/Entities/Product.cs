@@ -1,12 +1,14 @@
-﻿namespace Training.WarehouseControlSystem.Domain.Entities;
+﻿using Training.WarehouseControlSystem.Domain.Enums;
+
+namespace Training.WarehouseControlSystem.Domain.Entities;
 
 public class Product : Entity
-{
-    public Guid CustumerId { get; set; }
-
+{ 
     public string Name { get; set; } = string.Empty;
 
     public double Quantity { get; set; }
+    
+    public ProductType Type { get; set; }
 
     public double Price { get; set; }
 
@@ -18,7 +20,13 @@ public class Product : Entity
 
     public string Description { get; set; } = string.Empty;
 
-    public Guid AddedBy { get; set; }
+    public Guid UserId { get; set; }
+
+    public User User { get; set; }
+
+    public Guid CustomerId { get; set; }
+
+    public Customer Customer { get; set; }
 
     public DateTimeOffset CreatedAt { get; set; }
 

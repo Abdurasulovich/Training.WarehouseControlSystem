@@ -8,13 +8,11 @@ public class User : Entity
 
     public string username = string.Empty;
 
-    public string? Email = string.Empty;
+    public string? EmailAddress = string.Empty;
 
     public string PhoneNumber = string.Empty;
     
     public string Password = string.Empty;
-
-    public Guid ProductId { get; set; }
 
     public IList<Product> Products { get; set;}
 

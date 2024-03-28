@@ -64,7 +64,7 @@ public abstract class EntityRepositoryBase<TEntity, TContext>(TContext dbContext
         return entity;
     }
 
-    protected async ValueTask<TEntity> DeleteByIdAsync(
+    protected async ValueTask<TEntity?> DeleteByIdAsync(
         Guid id, 
         bool saveChanges = true,
         CancellationToken cancellationToken = default)

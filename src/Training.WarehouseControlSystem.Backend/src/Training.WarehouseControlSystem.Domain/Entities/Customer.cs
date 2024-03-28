@@ -14,11 +14,9 @@ public class Customer : Entity
 
     public string Description { get; set; } = string.Empty;
 
-    public Guid ProductId { get; set; }
-
     public IList<Product> Products { get; set; }
 
-    public DateTimeOffset CreatedDate { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
-    public DateTimeOffset UpdatedDate { get; set; } 
+    public DateTimeOffset UpdatedAt { get; set; } 
 }
