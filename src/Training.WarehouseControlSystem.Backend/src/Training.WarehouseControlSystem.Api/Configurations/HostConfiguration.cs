@@ -8,6 +8,7 @@ public static partial class HostConfiguration
             .AddRepositoriesAndServices()
             .AddPersistence()
             .AddExposers()
+            .AddMappers()
             .AddDevTools();
 
         return new(builder);

@@ -12,7 +12,7 @@ using Training.WarehouseControlSystem.Persistence.DataContext;
 namespace Training.WarehouseControlSystem.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240328131020_InitialCreated")]
+    [Migration("20240329110942_InitialCreated")]
     partial class InitialCreated
     {
         /// <inheritdoc />
@@ -128,6 +128,9 @@ namespace Training.WarehouseControlSystem.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("EmailAddress")
                         .HasMaxLength(128)
                         .HasColumnType("character varying(128)");
@@ -152,6 +155,9 @@ namespace Training.WarehouseControlSystem.Persistence.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("character varying(15)");
 
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("username")
                         .IsRequired()
                         .HasMaxLength(15)
@@ -159,7 +165,10 @@ namespace Training.WarehouseControlSystem.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmailAddress")
+                    b.HasIndex("PhoneNumber")
+                        .IsUnique();
+
+                    b.HasIndex("username")
                         .IsUnique();
 
                     b.ToTable("Users");

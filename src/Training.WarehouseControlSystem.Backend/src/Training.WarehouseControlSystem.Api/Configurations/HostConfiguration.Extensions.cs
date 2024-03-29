@@ -25,11 +25,11 @@ public static partial class HostConfiguration
         return builder;
     }
 
-    // private static WebApplicationBuilder AddMappers(this WebApplicationBuilder builder)
-    // {
-    //     builder.Services.AddAutoMapper(Assemblies);
-    //     return builder;
-    // }
+    private static WebApplicationBuilder AddMappers(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddAutoMapper(Assemblies);
+        return builder;
+    }
 
     private static WebApplicationBuilder AddRepositoriesAndServices(this WebApplicationBuilder builder)
     {

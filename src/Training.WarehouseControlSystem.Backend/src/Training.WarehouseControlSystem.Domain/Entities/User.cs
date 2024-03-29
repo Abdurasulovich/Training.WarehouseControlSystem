@@ -2,22 +2,22 @@
 
 public class User : Entity
 {
-    public string FirstName = string.Empty;
+    public string FirstName { get; set; } = string.Empty;
 
-    public string LastName = string.Empty;
+    public string LastName { get; set; } = string.Empty;
 
-    public string username = string.Empty;
+    public string username { get; set; } = string.Empty;
 
-    public string? EmailAddress = string.Empty;
+    public string? EmailAddress { get; set; } = string.Empty;
 
-    public string PhoneNumber = string.Empty;
+    public string PhoneNumber { get; set; } = string.Empty;
     
-    public string Password = string.Empty;
+    public string Password { get; set; } = string.Empty;
 
     public IList<Product> Products { get; set;}
 
-    public DateTimeOffset CreatedAt;
+    public DateTime CreatedAt { get; set; }
 
-    public DateTimeOffset UpdatedAt;
+    public DateTime UpdatedAt { get; set; }
 
 }

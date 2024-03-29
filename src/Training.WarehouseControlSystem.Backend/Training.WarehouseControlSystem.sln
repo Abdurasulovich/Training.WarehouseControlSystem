@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Training.WarehouseControlSy
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Training.WarehouseControlSystem.Persistence", "src\Training.WarehouseControlSystem.Persistence\Training.WarehouseControlSystem.Persistence.csproj", "{6E37296D-03C8-42A6-AB85-B994DCDA622D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training.WarehouseControlSystem.Infrastructure", "src\Training.WarehouseControlSystem.Infrastructure\Training.WarehouseControlSystem.Infrastructure.csproj", "{12745D9F-4B1D-41B1-9116-40027B078131}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Training.WarehouseControlSystem.Infrastructure", "src\Training.WarehouseControlSystem.Infrastructure\Training.WarehouseControlSystem.Infrastructure.csproj", "{12745D9F-4B1D-41B1-9116-40027B078131}"
 	ProjectSection(ProjectDependencies) = postProject
 		{90C6A706-14A0-47A8-9853-18CDDF836461} = {90C6A706-14A0-47A8-9853-18CDDF836461}
 	EndProjectSection

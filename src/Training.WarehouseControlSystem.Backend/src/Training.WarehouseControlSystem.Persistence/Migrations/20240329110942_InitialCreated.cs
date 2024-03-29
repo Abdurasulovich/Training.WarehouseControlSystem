@@ -35,12 +35,14 @@ namespace Training.WarehouseControlSystem.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    EmailAddress = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: true),
                     FirstName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     LastName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    Password = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    username = table.Column<string>(type: "character varying(15)", maxLength: 15, nullable: false),
+                    EmailAddress = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: true),
                     PhoneNumber = table.Column<string>(type: "character varying(15)", maxLength: 15, nullable: false),
-                    username = table.Column<string>(type: "character varying(15)", maxLength: 15, nullable: false)
+                    Password = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -93,9 +95,15 @@ namespace Training.WarehouseControlSystem.Persistence.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_EmailAddress",
+                name: "IX_Users_PhoneNumber",
                 table: "Users",
-                column: "EmailAddress",
+                column: "PhoneNumber",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_username",
+                table: "Users",
+                column: "username",
                 unique: true);
         }
 

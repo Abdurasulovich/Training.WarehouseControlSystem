@@ -43,6 +43,7 @@ public abstract class EntityRepositoryBase<TEntity, TContext>(TContext dbContext
         bool saveChanges = true,
         CancellationToken cancellationToken = default)
     {
+        entity.Id = Guid.NewGuid();
         await DbContext.Set<TEntity>().AddAsync(entity, cancellationToken);
 
         if(saveChanges)
