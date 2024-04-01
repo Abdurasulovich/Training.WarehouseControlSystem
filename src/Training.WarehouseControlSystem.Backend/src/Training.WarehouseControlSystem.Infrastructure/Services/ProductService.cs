@@ -12,7 +12,8 @@ namespace Training.WarehouseControlSystem.Infrastructure.Services;
 public class ProductService(
     IProductRepository productRepository, 
     ProductCreateValidator productCreateValidator,
-    ProductUpdateValidator productUpdateValidator) 
+    ProductUpdateValidator productUpdateValidator, 
+    ICustomerService customerService) 
     : IProductService
 {
     public IQueryable<Product?> Get(Expression<Func<Product, bool>>? predicate = default, bool asNoTracking = false)
@@ -29,21 +30,28 @@ public class ProductService(
             .ToListAsync(cancellationToken: cancellationToken);
     
 
-    public ValueTask<Product> CreateAsync(Product product, bool saveChanges = true, CancellationToken cancellationToken = default)
+    public async ValueTask<Product> CreateAsync(Product product, bool saveChanges = true, CancellationToken cancellationToken = default)
     {
         var validationResult = productCreateValidator.Validate(product);
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
-        return productRepository.CreateAsync(product, saveChanges, cancellationToken);
+        
+        var customerId = await customerService.GetByIdAsync(product.CustomerId, false, cancellationToken)
+                         ?? throw new InvalidOperationException("Customer with this Id not found.");
+        
+        product.CreatedAt = DateTime.UtcNow;
+        product.UpdatedAt = DateTime.UtcNow;
+        
+        return await productRepository.CreateAsync(product, saveChanges, cancellationToken);
     }
 
-    public ValueTask<Product> UpdateAsync(Product product, bool saveChanges = true, CancellationToken cancellationToken = default)
+    public async ValueTask<Product?> UpdateAsync(Product product, bool saveChanges = true, CancellationToken cancellationToken = default)
     {
         var validationResult = productUpdateValidator.Validate(product);
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 
-        return productRepository.UpdateAsync(product, saveChanges, cancellationToken);
+        return await productRepository.UpdateAsync(product, saveChanges, cancellationToken);
     }
 
     public ValueTask<Product?> DeleteByIdAsync(Guid productId, bool saveChanges = true,

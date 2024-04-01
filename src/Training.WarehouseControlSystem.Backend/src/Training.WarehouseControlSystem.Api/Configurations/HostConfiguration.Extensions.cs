@@ -2,6 +2,7 @@
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Training.WarehouseControlSystem.Application.Services;
+using Training.WarehouseControlSystem.Infrastructure.Common;
 using Training.WarehouseControlSystem.Infrastructure.Services;
 using Training.WarehouseControlSystem.Persistence.DataContext;
 using Training.WarehouseControlSystem.Persistence.Repositories;

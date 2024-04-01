@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Training.WarehouseControlSystem.Api.Dto;
-using Training.WarehouseControlSystem.Api.Dto.User;
+using Training.WarehouseControlSystem.Api.Dto.Users;
 using Training.WarehouseControlSystem.Application.Services;
 using Training.WarehouseControlSystem.Domain.Entities;
 
@@ -31,7 +30,7 @@ public class UserController(IUserService userService, IMapper mapper) : Controll
 
     [HttpGet("email")]
     public async ValueTask<IActionResult> GetByEmailAddressAsync(
-        [FromBody] string emailAddress,
+        [FromHeader] string emailAddress,
         CancellationToken cancellationToken = default)
     {
         var result = await userService.GetByEmailAddressAsync(emailAddress, true, cancellationToken);

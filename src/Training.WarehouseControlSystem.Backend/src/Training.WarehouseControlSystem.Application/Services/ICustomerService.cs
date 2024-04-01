@@ -13,7 +13,7 @@ public interface ICustomerService
 
     ValueTask<Customer> CreateAsync(Customer customer, bool saveChanges = true, CancellationToken cancellationToken = default);
 
-    ValueTask<Customer> UpdateAsync(Customer customer, bool saveChanges = true, CancellationToken cancellationToken = default);
+    ValueTask<Customer?> UpdateAsync(Customer customer, bool saveChanges = true, CancellationToken cancellationToken = default);
 
     ValueTask<Customer?> DeleteByIdAsync(Guid customerId, bool saveChanges = true, CancellationToken cancellationToken = default);
 }

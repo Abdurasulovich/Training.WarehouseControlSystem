@@ -13,7 +13,7 @@ public interface IProductService
 
     ValueTask<Product> CreateAsync(Product product, bool saveChanges = true, CancellationToken cancellationToken = default);
 
-    ValueTask<Product> UpdateAsync(Product product, bool saveChanges = true, CancellationToken cancellationToken = default);
+    ValueTask<Product?> UpdateAsync(Product product, bool saveChanges = true, CancellationToken cancellationToken = default);
 
     ValueTask<Product?> DeleteByIdAsync(Guid productId, bool saveChanges = true, CancellationToken cancellationToken = default);
 }

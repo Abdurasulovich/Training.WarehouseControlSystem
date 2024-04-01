@@ -1,6 +1,6 @@
-﻿namespace Training.WarehouseControlSystem.Api.Dto.User;
+﻿namespace Training.WarehouseControlSystem.Api.Dto.Users;
 
-public class UserUpdateDto
+public class UserDto
 {
     public Guid Id { get; set; }
     
@@ -13,6 +13,4 @@ public class UserUpdateDto
     public string PhoneNumber { get; set; }
     
     public string EmailAddress { get; set; }
-    
-    public string Password { get; set; }
 }

@@ -25,7 +25,8 @@ public class UserService(IUserRepository userRepository, UserValidator userValid
     public async ValueTask<User?> GetByEmailAddressAsync(string emailAddress, bool asNoTracking = false,
         CancellationToken cancellationToken = default)
         => await userRepository.Get(asNoTracking: asNoTracking)
-            .FirstOrDefaultAsync(user => user.EmailAddress == emailAddress, cancellationToken: cancellationToken);
+            .FirstOrDefaultAsync(user => user.EmailAddress == emailAddress, cancellationToken: cancellationToken) ??
+           throw new InvalidOperationException($"User with this email {emailAddress} not found");
 
     public async ValueTask<User> CreateAsync(User user, bool saveChanges = true,
         CancellationToken cancellationToken = default)

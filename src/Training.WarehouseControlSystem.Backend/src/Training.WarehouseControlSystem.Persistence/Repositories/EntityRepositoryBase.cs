@@ -57,7 +57,11 @@ public abstract class EntityRepositoryBase<TEntity, TContext>(TContext dbContext
         bool saveChanges = true,
         CancellationToken cancellationToken = default)
     {
-        DbContext.Set<TEntity>().Update(entity);
+        var existing = await DbContext.Set<TEntity>().FindAsync(entity.Id);
+        if (existing is null)
+            return null;
+        
+        DbContext.Entry(existing).CurrentValues.SetValues(entity);
 
         if (saveChanges)
             await DbContext.SaveChangesAsync(cancellationToken);
