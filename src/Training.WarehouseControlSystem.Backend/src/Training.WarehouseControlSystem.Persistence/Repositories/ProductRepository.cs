@@ -1,13 +1,15 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Training.WarehouseControlSystem.Domain.Entities;
+using Training.WarehouseControlSystem.Persistence.Caching.Brokers;
+using Training.WarehouseControlSystem.Persistence.Caching.Models;
 using Training.WarehouseControlSystem.Persistence.DataContext;
 using Training.WarehouseControlSystem.Persistence.Repositories.Interfaces;
 
 namespace Training.WarehouseControlSystem.Persistence.Repositories;
 
-public class ProductRepository(AppDbContext dbContext)
-    : EntityRepositoryBase<Product, AppDbContext>(dbContext), IProductRepository
+public class ProductRepository(AppDbContext dbContext, ICacheBroker cacheBroker)
+    : EntityRepositoryBase<Product, AppDbContext>(dbContext, cacheBroker, new CacheEntryOptions()), IProductRepository
 {
     public new IQueryable<Product?> Get(Expression<Func<Product, bool>>? predicate = default, bool asNoTracking = false)
         => base.Get(predicate, asNoTracking);

@@ -28,11 +28,6 @@ public class UserValidator : AbstractValidator<User>
                     .MaximumLength(50)
                     .WithMessage("Last name is not valid");
 
-                RuleFor(user => user.Password)
-                    .NotEmpty()
-                    .MinimumLength(8)
-                    .MaximumLength(128);
-
                 RuleFor(user => user.username)
                     .NotEmpty()
                     .MinimumLength(3)

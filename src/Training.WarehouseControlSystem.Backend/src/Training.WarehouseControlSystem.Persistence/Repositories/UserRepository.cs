@@ -1,12 +1,14 @@
 ﻿using System.Linq.Expressions;
 using Training.WarehouseControlSystem.Domain.Entities;
+using Training.WarehouseControlSystem.Persistence.Caching.Brokers;
+using Training.WarehouseControlSystem.Persistence.Caching.Models;
 using Training.WarehouseControlSystem.Persistence.DataContext;
 using Training.WarehouseControlSystem.Persistence.Repositories.Interfaces;
 
 namespace Training.WarehouseControlSystem.Persistence.Repositories;
 
-public class UserRepository(AppDbContext dbContext)
-    : EntityRepositoryBase<User, AppDbContext>(dbContext) , IUserRepository
+public class UserRepository(AppDbContext dbContext, ICacheBroker cacheBroker)
+    : EntityRepositoryBase<User, AppDbContext>(dbContext, cacheBroker, new CacheEntryOptions()) , IUserRepository
 {
     public new IQueryable<User?> Get(Expression<Func<User, bool>>? predicate = default, bool asNoTracking = false)
         => base.Get(predicate, asNoTracking);

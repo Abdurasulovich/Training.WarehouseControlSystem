@@ -1,4 +1,6 @@
-﻿namespace Training.WarehouseControlSystem.Domain.Entities;
+﻿using Training.WarehouseControlSystem.Domain.Common.Entities;
+
+namespace Training.WarehouseControlSystem.Domain.Entities;
 
 public class Customer : Entity
 {

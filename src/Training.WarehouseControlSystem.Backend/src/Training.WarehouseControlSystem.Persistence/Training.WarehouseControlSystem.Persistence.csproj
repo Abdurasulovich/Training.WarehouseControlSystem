@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Training.WarehouseControlSystem.Application\Training.WarehouseControlSystem.Application.csproj" />
+    <ProjectReference Include="..\Training.WarehouseControlSystem.Domain\Training.WarehouseControlSystem.Domain.csproj" />
   </ItemGroup>
 
 </Project>

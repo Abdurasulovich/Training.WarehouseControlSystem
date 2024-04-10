@@ -1,4 +1,5 @@
-﻿using Training.WarehouseControlSystem.Domain.Enums;
+﻿using Training.WarehouseControlSystem.Domain.Common.Entities;
+using Training.WarehouseControlSystem.Domain.Enums;
 
 namespace Training.WarehouseControlSystem.Domain.Entities;
 

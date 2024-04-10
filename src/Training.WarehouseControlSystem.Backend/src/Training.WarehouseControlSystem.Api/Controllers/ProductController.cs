@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Security.Authentication.ExtendedProtection;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Training.WarehouseControlSystem.Api.Dto.Products;
@@ -60,6 +61,16 @@ public class ProductController(IProductService productService, IMapper mapper) :
         var productMap = mapper.Map<Product>(productCreateDto);
 
         var result = await productService.UpdateAsync(productMap, true, cancellationToken);
+
+        return result is not null ? Ok(mapper.Map<ProductDto>(result)) : NoContent();
+    }
+
+    [HttpDelete("id")]
+    public async ValueTask<IActionResult> DeleteByIdAsync(
+        [FromHeader] Guid id,
+        CancellationToken cancellationToken = default)
+    {
+        var result = await productService.DeleteByIdAsync(id, false, cancellationToken);
 
         return result is not null ? Ok(mapper.Map<ProductDto>(result)) : NoContent();
     }

@@ -1,0 +1,11 @@
+﻿using System.Linq.Expressions;
+using Training.WarehouseControlSystem.Domain.Entities;
+
+namespace Training.WarehouseControlSystem.Application.Common.Notifications.Services;
+
+public interface IEmailHistoryService
+{
+    IQueryable<EmailHistory> Get(Expression<Func<EmailHistory, bool>>? predicate = default, bool asNoTracking = false);
+
+    ValueTask<EmailHistory> CreateAsync(EmailHistory emailHistory, bool saveChanges = true, CancellationToken cancellationToken = default);
+}

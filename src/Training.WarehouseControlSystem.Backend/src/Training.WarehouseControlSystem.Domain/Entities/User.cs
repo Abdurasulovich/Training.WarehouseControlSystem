@@ -1,6 +1,8 @@
-﻿namespace Training.WarehouseControlSystem.Domain.Entities;
+﻿using Training.WarehouseControlSystem.Domain.Common.Entities;
 
-public class User : Entity
+namespace Training.WarehouseControlSystem.Domain.Entities;
+
+public sealed class User : Entity
 {
     public string FirstName { get; set; } = string.Empty;
 
@@ -12,7 +14,11 @@ public class User : Entity
 
     public string PhoneNumber { get; set; } = string.Empty;
     
-    public string Password { get; set; } = string.Empty;
+    public IList<Role> Roles { get; set; }
+    
+    public UserSettings UserSettings { get; set; }
+    
+    public UserCredentials UserCredentials { get; set; }
 
     public IList<Product> Products { get; set;}
 
