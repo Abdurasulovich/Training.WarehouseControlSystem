@@ -1,10 +1,9 @@
-﻿using Training.WarehouseControlSystem.Domain.Common.Events;
+﻿using RabbitMQ.Client;
+using Training.WarehouseControlSystem.Domain.Common.Events;
 
 namespace Training.WarehouseControlSystem.Application.Common.EventBus.Brokers;
 
 public interface IRabbitMqConnectionProvider
 {
-    ValueTask PublishLocalAsync<TEvent>(TEvent command) where TEvent : IEvent;
-
-    ValueTask PublishAsync<TEvent>(TEvent @event, string exchange, string routingKey, CancellationToken cancellationToken) where TEvent : Event;
+    ValueTask<IChannel> CreateChannelAsync();
 }
